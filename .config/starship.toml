@@ -1,0 +1,26 @@
+# ~/.config/starship.toml # A minimal left prompt 
+format = """$directory$jobs$character"""
+right_format = """$all$cmd_duration$sudo$time""" 
+
+[directory] 
+fish_style_pwd_dir_length = 2 
+format = '[$path]($style)[$read_only]($read_only_style) ' 
+style = 'bold blue' 
+[jobs] 
+format = '[$symbol $number]($style) ' 
+symbol = '✦' 
+style = 'bold blue' 
+[character] 
+success_symbol = '[❯](bold blue)' 
+error_symbol = '[❯](bold purple)' 
+[time] 
+disabled = false 
+format = '[ $time ]($style)' 
+style = 'inverted purple' 
+[sudo] 
+format = '[ 賢者ﾀｲﾑ ]($style)' 
+disabled = true 
+style = 'inverted purple' 
+[cmd_duration] 
+format = '[$duration ]($style)' 
+style = 'bold purple'

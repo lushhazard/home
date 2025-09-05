@@ -1,0 +1,75 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    //"height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 5, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "clock",
+        "tray",
+    ],
+     // Modules configuration
+     "hyprland/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{icon}",
+         "format-icons": {
+             "urgent": "  ",
+             "active": " 󰔶 ",
+             "default": " 󰔷 "
+         }
+     },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "locale":"ja_JP.UTF-8",
+        "format": "{:L%Y年%B%d日 %H:%M【%a】}",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "「{essid}」{signalStrength}",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (IPなし) ",
+        "format-disconnected": "未接続⚠",
+        "on-click": "nm-connection-editor"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}{icon}{format_source}",
+        "format-bluetooth": "{volume}{icon}{format_source} ",
+        "format-bluetooth-muted": "{icon}{format_source} ",
+        "format-muted": "{format_source}",
+        "format-source": "{volume}",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "  ",
+            "default": ["" , "", ""]
+        },
+        "on-click": "pwvucontrol"
+    },
+    }
+}
