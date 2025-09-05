@@ -24,3 +24,5 @@ style = 'inverted purple'
 [cmd_duration] 
 format = '[$duration ]($style)' 
 style = 'bold purple'
+[git_status]
+style = 'bold purple'
