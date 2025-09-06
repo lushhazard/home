@@ -7,22 +7,24 @@ fish_style_pwd_dir_length = 2
 format = '[$path]($style)[$read_only]($read_only_style) ' 
 style = 'bold blue' 
 [jobs] 
-format = '[$symbol $number]($style) ' 
+format = '[$symbol $number]($style)' 
 symbol = '✦' 
 style = 'bold blue' 
 [character] 
 success_symbol = '[❯](bold blue)' 
-error_symbol = '[❯](bold purple)' 
+error_symbol = '[❯](bold red)' 
 [time] 
 disabled = false 
 format = '[ $time ]($style)' 
-style = 'inverted purple' 
+style = 'inverted red' 
 [sudo] 
 format = '[ 賢者ﾀｲﾑ ]($style)' 
 disabled = true 
-style = 'inverted purple' 
+style = 'inverted red' 
 [cmd_duration] 
 format = '[$duration ]($style)' 
-style = 'bold purple'
+style = 'bold red'
 [git_status]
-style = 'bold purple'
+style = 'bold red'
+[git_branch]
+style = 'bold red'
