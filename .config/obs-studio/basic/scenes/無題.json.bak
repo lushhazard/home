@@ -332,7 +332,7 @@
             "id": "pipewire-screen-capture-source",
             "versioned_id": "pipewire-screen-capture-source",
             "settings": {
-                "RestoreToken": ""
+                "RestoreToken": "d3bab7ab-ea55-48da-853b-5c5287700638"
             },
             "mixers": 0,
             "sync": 0,
@@ -507,7 +507,7 @@
     "transition_duration": 300,
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -74,
+    "scaling_level": -11,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "virtual-camera": {

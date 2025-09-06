@@ -1,0 +1,164 @@
+import Quickshell
+import Quickshell.Io
+import Quickshell.Services.Pipewire
+import Quickshell.Hyprland
+import QtQuick
+import QtQuick.Layouts
+import "blocks" as Blocks
+import "root:/"
+
+Scope {
+    IpcHandler {
+        target: "bar"
+
+        function toggleVis(): void {
+            // Toggle visibility of all bar instances
+            for (let i = 0; i < Quickshell.screens.length; i++) {
+                barInstances[i].visible = !barInstances[i].visible;
+            }
+        }
+    }
+
+    property var barInstances: []
+
+    Variants {
+        model: Quickshell.screens
+
+        PanelWindow {
+            id: bar
+            property var modelData
+            screen: modelData
+
+            Component.onCompleted: {
+                barInstances.push(bar);
+            }
+
+            color: "transparent"
+
+            Rectangle {
+                id: highlight
+                anchors.fill: parent
+                color: Theme.get.barBgColor
+            }
+
+            implicitHeight: 16
+
+            visible: true
+
+            anchors {
+                top: Theme.get.onTop
+                bottom: !Theme.get.onTop
+                left: true
+                right: true
+            }
+
+            //this is all sound stuff, for my sound setup
+            //
+            property var vcsink
+            property var mediasink
+            property var nullsink
+
+            PwObjectTracker {
+                id: sinkBinder
+                objects: [vcsink, mediasink, nullsink]
+            }
+
+            Timer {
+                interval: 1000
+                running: true
+                repeat: false
+                onTriggered: {
+                    for (var i = 0; i < Pipewire.nodes.rowCount(); i++) {
+                        var node = Pipewire.nodes.values[i];
+                        var desc = node.description;
+
+                        if (desc.startsWith("vc-sink")) {
+                            vcsink = node;
+                        } else if (desc.startsWith("media-sink")) {
+                            mediasink = node;
+                        } else if (desc.startsWith("nullsink")) {
+                            nullsink = node;
+                        }
+                    }
+                }
+            }
+
+            RowLayout {
+                id: allBlocks
+                spacing: 0
+                anchors.fill: parent
+
+                // Left side
+                RowLayout {
+                    id: leftBlocks
+                    spacing: 0
+                    Layout.alignment: Qt.AlignLeft
+                    //Layout.topMargin: -4
+                    Layout.fillWidth: true
+
+                    //Blocks.Icon {}
+                    Blocks.Workspaces {}
+                }
+
+                Blocks.ActiveWorkspace {
+                    id: activeWorkspace
+                    Layout.leftMargin: 0
+                    Layout.topMargin: -6
+                    anchors.centerIn: undefined
+                    Layout.alignment: Qt.AlignLeft
+
+                    chopLength: {
+                        var space = Math.floor(bar.width - (rightBlocks.implicitWidth + leftBlocks.implicitWidth));
+                        return space * 0.08;
+                    }
+
+                    text: {
+                        var str = activeWindowTitle;
+                        return str.length > chopLength ? str.slice(0, chopLength) + '...' : str;
+                    }
+
+                    color: {
+                        return Hyprland.focusedMonitor == Hyprland.monitorFor(screen) ? "#FFFFFF" : "#CCCCCC";
+                    }
+                }
+
+                // Without this filler item, the active window block will be centered
+                // despite setting left alignment
+                Item {
+                    Layout.fillWidth: true
+                }
+
+                // Right side
+                RowLayout {
+                    id: rightBlocks
+                    spacing: 0
+                    Layout.alignment: Qt.AlignRight
+                    Layout.fillWidth: true
+                    //Layout.topMargin: -10
+
+                    Blocks.SystemTray {}
+
+                    Blocks.Sound {
+                        id: vcSound
+                        sink: vcsink
+                        name: "vc"
+                    }
+
+                    Blocks.Sound {
+                        id: mediaSound
+                        sink: mediasink
+                        name: "me"
+                    }
+
+                    Blocks.Sound {
+                        id: nullSound
+                        sink: nullsink
+                        name: "nu"
+                    }
+                    Blocks.Date {}
+                    Blocks.Time {}
+                }
+            }
+        }
+    }
+}
