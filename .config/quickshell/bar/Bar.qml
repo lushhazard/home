@@ -66,7 +66,7 @@ Scope {
             Timer {
                 interval: 1000
                 running: true
-                repeat: false
+                repeat: true
                 onTriggered: {
                     for (var i = 0; i < Pipewire.nodes.rowCount(); i++) {
                         var node = Pipewire.nodes.values[i];
@@ -78,6 +78,10 @@ Scope {
                             mediasink = node;
                         } else if (desc.startsWith("nullsink")) {
                             nullsink = node;
+                        }
+                        if (nullsink && vcsink && mediasink) {
+                            console.log("all sinks ready, stopping sink timer...");
+                            stop();
                         }
                     }
                 }
