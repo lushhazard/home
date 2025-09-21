@@ -79,7 +79,7 @@ BarBlock {
 
     Process {
         id: pavucontrol
-        command: ["pwvucontrol"]
+        command: ["pavucontrol"]
         running: false
     }
 
