@@ -15,6 +15,7 @@ create_sink_idempotent() {
 create_sink_idempotent nullsink media.class=Audio/Sink
 create_sink_idempotent media-sink media.class=Audio/Sink
 create_sink_idempotent vc-sink media.class=Audio/Sink
+create_sink_idempotent mic-sink media.class=Audio/Sink
 
 pactl set-default-sink nullsink
 
