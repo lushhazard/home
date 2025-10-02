@@ -488,7 +488,7 @@
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
-                "id_counter": 18,
+                "id_counter": 19,
                 "custom_size": false,
                 "items": [
                     {
@@ -740,12 +740,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 2.0,
-                            "y": 2.0
+                            "x": 1.3333333730697632,
+                            "y": 1.3333333730697632
                         },
                         "scale_rel": {
-                            "x": 2.0,
-                            "y": 2.0
+                            "x": 1.3333333730697632,
+                            "y": 1.3333333730697632
                         },
                         "bounds": {
                             "x": 0.0,
@@ -808,6 +808,9 @@
                 "device_id": "/dev/video0",
                 "input": 0,
                 "pixelformat": 1448695129,
+                "resolution": 8246337209400,
+                "framerate": 60,
+                "color_range": 1,
                 "buffering": false,
                 "auto_reset": false
             },
@@ -1155,7 +1158,7 @@
     "transition_duration": 300,
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -25,
+    "scaling_level": -74,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "virtual-camera": {

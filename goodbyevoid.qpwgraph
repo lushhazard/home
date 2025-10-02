@@ -2,8 +2,16 @@
 <patchbay name="goodbyevoid" version="0.9.5">
  <items>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="Elgato HD60 X Pro" port="Elgato HD60 X:capture_AUX1"/>
-   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FR"/>
+   <output node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:monitor_FR"/>
+   <input node="OBS Studio: media" port="OBS Studio: media:in_2"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-video">
+   <output node="Elgato HD60 X (V4L2)" port="Elgato HD60 X:capture_1"/>
+   <input node="obs-1" port="obs:input_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="HyperX QuadCast S アナログステレオ" port="HyperX QuadCast S:capture_FL"/>
+   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FL"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
    <output node="OBS/OBS-Monitor" port="OBS-Monitor:output_FL"/>
@@ -14,24 +22,20 @@
    <input node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:playback_FR"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="HyperX QuadCast S アナログステレオ" port="HyperX QuadCast S:capture_FL"/>
+   <output node="Elgato HD60 X Pro" port="Elgato HD60 X:capture_AUX1"/>
+   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="HyperX QuadCast S デジタルステレオ (IEC958)" port="HyperX QuadCast S:capture_FL"/>
    <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FL"/>
   </item>
-  <item node-type="pipewire" port-type="pipewire-video">
-   <output node="Elgato HD60 X (V4L2)" port="Elgato HD60 X:capture_1"/>
-   <input node="obs-1" port="obs:input_1"/>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:monitor_FR"/>
+   <input node="OBS Studio: mic" port="OBS Studio: mic:in_2"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:monitor_FR"/>
-   <input node="OBS Studio: media" port="OBS Studio: media:in_2"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="Elgato HD60 X アナログステレオ" port="Elgato HD60 X:capture_FL"/>
-   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FL"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="HyperX QuadCast S アナログステレオ" port="HyperX QuadCast S:capture_FR"/>
-   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FR"/>
+   <output node="spotify" port="spotify:output_FR"/>
+   <input node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:playback_FR"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
    <output node="OBS/OBS-Monitor-1" port="OBS-Monitor:output_FR"/>
@@ -46,36 +50,12 @@
    <input node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:playback_FL"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="spotify" port="spotify:output_FR"/>
-   <input node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:playback_FR"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:monitor_FR"/>
-   <input node="OBS Studio: mic" port="OBS Studio: mic:in_2"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:monitor_FL"/>
-   <input node="USB Audio Front Headphones" port="USB Audio #1:playback_FL"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="vc-sink Audio/Sink sink" port="vc-sink Audio/Sink sink:monitor_FL"/>
-   <input node="USB Audio Front Headphones" port="USB Audio #1:playback_FL"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:monitor_FL"/>
-   <input node="OBS Studio: mic" port="OBS Studio: mic:in_1"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="HyperX QuadCast S Pro" port="HyperX QuadCast S:capture_AUX0"/>
-   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FL"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
    <output node="HyperX QuadCast S アナログステレオ" port="HyperX QuadCast S:capture_FR"/>
-   <input node="PipeWire ALSA [audacity]/ALSA Capture [audacity]" port="ALSA Capture [audacity]:input_FR"/>
+   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FR"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="vc-sink Audio/Sink sink" port="vc-sink Audio/Sink sink:monitor_FL"/>
-   <input node="OBS Studio: vc" port="OBS Studio: vc:in_1"/>
+   <output node="Elgato HD60 X アナログステレオ" port="Elgato HD60 X:capture_FL"/>
+   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FL"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
    <output node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:monitor_FL"/>
@@ -90,40 +70,32 @@
    <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FR"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="Elgato HD60 X アナログステレオ" port="Elgato HD60 X:capture_FR"/>
-   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FR"/>
+   <output node="vc-sink Audio/Sink sink" port="vc-sink Audio/Sink sink:monitor_FL"/>
+   <input node="OBS Studio: vc" port="OBS Studio: vc:in_1"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:monitor_FL"/>
-   <input node="OBS Studio: media" port="OBS Studio: media:in_1"/>
+   <output node="HyperX QuadCast S アナログステレオ" port="HyperX QuadCast S:capture_FR"/>
+   <input node="PipeWire ALSA [audacity]/ALSA Capture [audacity]" port="ALSA Capture [audacity]:input_FR"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="HyperX QuadCast S Pro" port="HyperX QuadCast S:capture_AUX1"/>
-   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FR"/>
+   <output node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:monitor_FL"/>
+   <input node="OBS Studio: mic" port="OBS Studio: mic:in_1"/>
   </item>
-  <item node-type="pipewire" port-type="pipewire-video">
-   <output node="xdg-desktop-portal-hyprland" port="xdg-desktop-portal-hyprland:capture_1"/>
-   <input node="obs" port="obs:input_1"/>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="HyperX QuadCast S Pro" port="HyperX QuadCast S:capture_AUX0"/>
+   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="vc-sink Audio/Sink sink" port="vc-sink Audio/Sink sink:monitor_FL"/>
+   <input node="USB Audio Front Headphones" port="USB Audio #1:playback_FL"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
    <output node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:monitor_FL"/>
-   <input node="OBS Studio: null" port="OBS Studio: null:in_1"/>
+   <input node="USB Audio Front Headphones" port="USB Audio #1:playback_FL"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="vc-sink Audio/Sink sink" port="vc-sink Audio/Sink sink:monitor_FR"/>
-   <input node="OBS Studio: vc" port="OBS Studio: vc:in_2"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="Elgato HD60 X Pro" port="Elgato HD60 X:capture_AUX0"/>
-   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FL"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="Firefox" port="Firefox:output_FL"/>
-   <input node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:playback_FL"/>
-  </item>
-  <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="Elgato HD60 X デジタルステレオ (IEC958)" port="Elgato HD60 X:capture_FL"/>
-   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FL"/>
+   <output node="OBS/OBS-Monitor-1" port="OBS-Monitor:output_FL"/>
+   <input node="USB Audio Speakers" port="USB Audio:playback_FL"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
    <output node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:monitor_FR"/>
@@ -138,12 +110,48 @@
    <input node="USB Audio Front Headphones" port="USB Audio #1:playback_FR"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Firefox" port="Firefox:output_FL"/>
+   <input node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
    <output node="HyperX QuadCast S アナログステレオ" port="HyperX QuadCast S:capture_FL"/>
    <input node="PipeWire ALSA [audacity]/ALSA Capture [audacity]" port="ALSA Capture [audacity]:input_FL"/>
   </item>
   <item node-type="pipewire" port-type="pipewire-audio">
-   <output node="OBS/OBS-Monitor-1" port="OBS-Monitor:output_FL"/>
-   <input node="USB Audio Speakers" port="USB Audio:playback_FL"/>
+   <output node="Elgato HD60 X デジタルステレオ (IEC958)" port="Elgato HD60 X:capture_FL"/>
+   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="vc-sink Audio/Sink sink" port="vc-sink Audio/Sink sink:monitor_FR"/>
+   <input node="OBS Studio: vc" port="OBS Studio: vc:in_2"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Elgato HD60 X Pro" port="Elgato HD60 X:capture_AUX0"/>
+   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:monitor_FL"/>
+   <input node="OBS Studio: null" port="OBS Studio: null:in_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="media-sink Audio/Sink sink" port="media-sink Audio/Sink sink:monitor_FL"/>
+   <input node="OBS Studio: media" port="OBS Studio: media:in_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="HyperX QuadCast S Pro" port="HyperX QuadCast S:capture_AUX1"/>
+   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-video">
+   <output node="xdg-desktop-portal-hyprland" port="xdg-desktop-portal-hyprland:capture_1"/>
+   <input node="obs" port="obs:input_1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="HyperX QuadCast S デジタルステレオ (IEC958)" port="HyperX QuadCast S:capture_FR"/>
+   <input node="mic-sink Audio/Sink sink" port="mic-sink Audio/Sink sink:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Elgato HD60 X アナログステレオ" port="Elgato HD60 X:capture_FR"/>
+   <input node="nullsink Audio/Sink sink" port="nullsink Audio/Sink sink:playback_FR"/>
   </item>
  </items>
 </patchbay>
