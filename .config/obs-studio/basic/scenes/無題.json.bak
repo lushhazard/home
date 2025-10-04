@@ -808,11 +808,11 @@
                 "device_id": "/dev/video0",
                 "input": 0,
                 "pixelformat": 1448695129,
-                "buffering": false,
-                "auto_reset": false,
                 "resolution": 8246337209400,
                 "framerate": 60,
-                "color_range": 1
+                "color_range": 1,
+                "buffering": false,
+                "auto_reset": false
             },
             "mixers": 0,
             "sync": 0,
@@ -1158,7 +1158,7 @@
     "transition_duration": 300,
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -25,
+    "scaling_level": -74,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "virtual-camera": {
