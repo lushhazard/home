@@ -3,6 +3,7 @@ BackgroundNormal=0, 0, 0
 
 [General]
 TerminalApplication=foot
+TerminalService=Foot.desktop
 
 [KFileDialog Settings]
 Allow Expansion=false
