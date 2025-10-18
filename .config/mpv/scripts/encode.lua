@@ -324,7 +324,7 @@ function set_timestamp(profile)
 			only_active_tracks = false,
 			preserve_filters = true,
 			append_filter = "",
-			codec = "-sn -c:v copy -c:a copy -crf 30 -b:v 0",
+			codec = "-sn -c:v libx264 -preset slow -crf 23 -c:a aac -b:a 192k",
 			output_format = "$f_$n.mp4",
 			output_directory = "",
 			ffmpeg_command = "ffmpeg",
