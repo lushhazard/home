@@ -7,7 +7,7 @@
 # Preferences dialog.
 
 (prev-language "Japanese")
-(config-version "3.0.4")
+(config-version "3.0.6")
 (default-grid
     (style on-off-dash)
     (fgcolor

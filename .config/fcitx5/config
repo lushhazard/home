@@ -1,6 +1,8 @@
 [Hotkey]
 # トリガーキーを押すたびに切り替える
 EnumerateWithTriggerKeys=True
+# 一時的に第1入力メソッドに切り替える
+AltTriggerKeys=
 # 次の入力メソッドに切り替える
 EnumerateForwardKeys=
 # 前の入力メソッドに切り替える
@@ -14,9 +16,6 @@ ModifierOnlyKeyTimeout=250
 0=Control+space
 1=Zenkaku_Hankaku
 2=Hangul
-
-[Hotkey/AltTriggerKeys]
-0=Shift_L
 
 [Hotkey/EnumerateGroupForwardKeys]
 0=Super+space
