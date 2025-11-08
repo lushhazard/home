@@ -35,7 +35,7 @@ RowLayout {
                         id: workspaceText
                         text: focused ? (index % 2 === 0 ? "▼" : "▲") : (index % 2 === 0 ? "▽" : "△")
                         color: "white"
-                        font.pixelSize: 16
+                        font.pixelSize: 13
                         font.bold: true
                     }
 

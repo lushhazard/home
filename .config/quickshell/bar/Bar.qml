@@ -97,7 +97,7 @@ Scope {
                     id: leftBlocks
                     spacing: 0
                     Layout.alignment: Qt.AlignLeft
-                    //Layout.topMargin: -4
+                    Layout.topMargin: -4
                     Layout.fillWidth: true
 
                     //Blocks.Icon {}
