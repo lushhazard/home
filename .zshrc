@@ -41,8 +41,6 @@ export ZSH_THEME="fishy"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=~/.config/zsh/custom
 
-plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
 export LANG=ja_JP.UTF-8
