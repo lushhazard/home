@@ -1,6 +1,6 @@
 {
-    "current_scene": "シーン",
-    "current_program_scene": "シーン",
+    "current_scene": "cc",
+    "current_program_scene": "cc",
     "scene_order": [
         {
             "name": "シーン"
@@ -338,7 +338,7 @@
             "id": "pipewire-screen-capture-source",
             "versioned_id": "pipewire-screen-capture-source",
             "settings": {
-                "RestoreToken": "d3bab7ab-ea55-48da-853b-5c5287700638"
+                "RestoreToken": "82e84537-e58e-46a0-8d48-1134041ad3eb"
             },
             "mixers": 0,
             "sync": 0,
@@ -416,7 +416,7 @@
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
-            "monitoring_type": 0,
+            "monitoring_type": 2,
             "private_settings": {}
         },
         {
@@ -740,12 +740,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 1.3333333730697632,
-                            "y": 1.3333333730697632
+                            "x": 1.0,
+                            "y": 1.0
                         },
                         "scale_rel": {
-                            "x": 1.3333333730697632,
-                            "y": 1.3333333730697632
+                            "x": 1.0,
+                            "y": 1.0
                         },
                         "bounds": {
                             "x": 0.0,
@@ -807,9 +807,9 @@
             "settings": {
                 "device_id": "/dev/video0",
                 "input": 0,
-                "pixelformat": 1448695129,
-                "resolution": 8246337209400,
-                "framerate": 60,
+                "pixelformat": 842094158,
+                "resolution": -1,
+                "framerate": -1,
                 "color_range": 1,
                 "buffering": false,
                 "auto_reset": false
@@ -1090,12 +1090,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 2.0,
-                            "y": 2.0
+                            "x": 1.0,
+                            "y": 1.0
                         },
                         "scale_rel": {
-                            "x": 2.0,
-                            "y": 2.0
+                            "x": 1.0,
+                            "y": 1.0
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1161,6 +1161,9 @@
     "scaling_level": -74,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
+    "virtual-camera": {
+        "type2": 3
+    },
     "modules": {
         "scripts-tool": [],
         "output-timer": {
