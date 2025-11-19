@@ -1,6 +1,6 @@
 {
-    "current_scene": "cc",
-    "current_program_scene": "cc",
+    "current_scene": "シーン",
+    "current_program_scene": "シーン",
     "scene_order": [
         {
             "name": "シーン"
@@ -740,12 +740,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 1.3333333730697632,
+                            "y": 1.3333333730697632
                         },
                         "scale_rel": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 1.3333333730697632,
+                            "y": 1.3333333730697632
                         },
                         "bounds": {
                             "x": 0.0,
@@ -805,11 +805,14 @@
             "id": "v4l2_input",
             "versioned_id": "v4l2_input",
             "settings": {
-                "device_id": "/dev/video0",
+                "device_id": "/dev/video1",
+                "Brightness": 140,
+                "Contrast": 140,
+                "Saturation": 140,
                 "input": 0,
-                "pixelformat": 842094158,
-                "resolution": -1,
-                "framerate": -1,
+                "pixelformat": 1448695129,
+                "resolution": 8246337209400,
+                "framerate": 50,
                 "color_range": 1,
                 "buffering": false,
                 "auto_reset": false
@@ -1090,12 +1093,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 1.3333333730697632,
+                            "y": 1.3333333730697632
                         },
                         "scale_rel": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 1.3333333730697632,
+                            "y": 1.3333333730697632
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1158,7 +1161,7 @@
     "transition_duration": 300,
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -25,
+    "scaling_level": -74,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "virtual-camera": {
