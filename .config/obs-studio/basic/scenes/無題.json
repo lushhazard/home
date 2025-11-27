@@ -15,7 +15,7 @@
     "name": "無題",
     "sources": [
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "シーン",
             "uuid": "b7a0376a-50dd-4814-abd7-7b0ad8b693a9",
             "id": "scene",
@@ -332,7 +332,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "スクリーンキャプチャ (PipeWire)",
             "uuid": "0f01bf0d-ffa5-4783-9815-60e639361bba",
             "id": "pipewire-screen-capture-source",
@@ -358,7 +358,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "media",
             "uuid": "238eeaef-dd03-4f03-a86d-84d72f756244",
             "id": "jack_output_capture",
@@ -389,7 +389,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "null",
             "uuid": "3e2cbaef-8b42-461b-8518-aebea24b2d0d",
             "id": "jack_output_capture",
@@ -420,7 +420,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "vc",
             "uuid": "cd531e38-3e64-4d22-b1b4-06d9cf1059d5",
             "id": "jack_output_capture",
@@ -451,7 +451,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "mic",
             "uuid": "534e3bf8-6da5-4a28-91dd-fb416bcf861f",
             "id": "jack_output_capture",
@@ -482,7 +482,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "cc",
             "uuid": "a283e278-562e-4e5b-8152-321dcafcde37",
             "id": "scene",
@@ -799,7 +799,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "映像キャプチャデバイス (V4L2)",
             "uuid": "cc962818-6256-467c-b33c-c62f5330056e",
             "id": "v4l2_input",
@@ -835,7 +835,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536870913,
+            "prev_ver": 536870914,
             "name": "discord screenshare",
             "uuid": "731428d0-da5e-4f1d-a6bb-fb981aa289c8",
             "id": "scene",
@@ -1164,9 +1164,6 @@
     "scaling_level": -74,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
-    "virtual-camera": {
-        "type2": 4
-    },
     "modules": {
         "scripts-tool": [],
         "output-timer": {
