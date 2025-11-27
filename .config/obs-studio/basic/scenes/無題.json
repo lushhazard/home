@@ -1,6 +1,6 @@
 {
-    "current_scene": "シーン",
-    "current_program_scene": "シーン",
+    "current_scene": "cc",
+    "current_program_scene": "cc",
     "scene_order": [
         {
             "name": "シーン"
@@ -740,12 +740,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 1.3333333730697632,
-                            "y": 1.3333333730697632
+                            "x": 2.0,
+                            "y": 2.0
                         },
                         "scale_rel": {
-                            "x": 1.3333333730697632,
-                            "y": 1.3333333730697632
+                            "x": 2.0,
+                            "y": 2.0
                         },
                         "bounds": {
                             "x": 0.0,
@@ -805,14 +805,14 @@
             "id": "v4l2_input",
             "versioned_id": "v4l2_input",
             "settings": {
-                "device_id": "/dev/video1",
-                "Brightness": 140,
-                "Contrast": 140,
-                "Saturation": 140,
+                "device_id": "/dev/video0",
+                "Brightness": 110,
+                "Contrast": 135,
+                "Saturation": 129,
                 "input": 0,
                 "pixelformat": 1448695129,
-                "resolution": 8246337209400,
-                "framerate": 50,
+                "resolution": -1,
+                "framerate": -1,
                 "color_range": 1,
                 "buffering": false,
                 "auto_reset": false
@@ -1165,7 +1165,7 @@
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "virtual-camera": {
-        "type2": 3
+        "type2": 4
     },
     "modules": {
         "scripts-tool": [],
