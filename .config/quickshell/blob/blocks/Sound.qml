@@ -12,10 +12,11 @@ BarBlock {
     property var name
 
     PwObjectTracker {
+
         onObjectsChanged: {
-            if (sink?.audio) {
-                sink.audio.volumeChanged.disconnect(updateVolume); // safe to call even if not connected
-                sink.audio.volumeChanged.connect(updateVolume);
+            if (root.sink?.audio) {
+                root.sink.audio.volumeChanged.disconnect(updateVolume); // safe to call even if not connected
+                root.sink.audio.volumeChanged.connect(updateVolume);
                 updateVolume(); // update immediately
             }
         }
@@ -29,7 +30,9 @@ BarBlock {
     }
 
     content: BarText {
-        symbolText: `${sink?.audio?.muted ? "󰖁" : "󰕾"} ${Math.round(sink?.audio?.volume * 100)}${name}`
+        symbolText: `${root.sink?.audio?.muted ? "󰖁" : "󰕾"} ${Math.round(root.sink?.audio?.volume * 100)}${root.name}`
+
+        font.pixelSize: 16
     }
 
     // Interaction area on the block
@@ -48,20 +51,20 @@ BarBlock {
         }
 
         onClicked: mouse => {
-            if (!sink?.audio)
+            if (!root.sink?.audio)
                 return;
             if (mouse.button === Qt.LeftButton) {
-                sink.audio.muted = !sink.audio.muted;
+                root.sink.audio.muted = !root.sink.audio.muted;
             } else if (mouse.button === Qt.RightButton) {
                 pavucontrol.running = true;
             }
         }
 
         onWheel: function (event) {
-            if (!sink?.audio)
+            if (!root.sink?.audio)
                 return;
             const delta = (event.angleDelta.y / 120) * 0.05;
-            sink.audio.volume = Math.max(0, Math.min(1, sink.audio.volume + delta));
+            root.sink.audio.volume = Math.max(0, Math.min(1, root.sink.audio.volume + delta));
         }
     }
 
@@ -90,18 +93,12 @@ BarBlock {
         implicitWidth: 40
         implicitHeight: 160
 
-        // Anchor to the bar window and position relative to this block
         anchor {
             window: root.QsWindow?.window
-            // Show below the block (drop-down). If your bar is at the bottom, flip to Bottom/Top.
             edges: Edges.Top
             gravity: Edges.Bottom
         }
 
-        // Optional: keep above the bar window if supported
-        // staysOnTop: true
-
-        // Track hover inside the popup so it doesn't disappear when moving from the block
         MouseArea {
             id: popupMouse
             anchors.fill: parent
@@ -111,9 +108,9 @@ BarBlock {
 
             Rectangle {
                 anchors.fill: parent
-                color: "#2c2c2c"
-                border.color: "#3c3c3c"
-                radius: 4
+                color: "#111111"
+                //border.color: "#FF8800"
+                radius: 0
 
                 Slider {
                     id: control
@@ -122,13 +119,11 @@ BarBlock {
                     from: 0
                     to: 1
 
-                    // Keep slider in sync with sink volume
-                    value: typeof sink?.audio?.volume === "number" ? sink.audio.volume : 0
+                    value: typeof root.sink?.audio?.volume === "number" ? root.sink.audio.volume : 0
 
-                    // When user moves slider, update sink volume
                     onMoved: {
-                        if (sink?.audio) {
-                            sink.audio.volume = value;
+                        if (root.sink?.audio) {
+                            root.sink.audio.volume = value;
                         }
                     }
 
@@ -141,7 +136,7 @@ BarBlock {
                         implicitHeight: 20
                         radius: 13
                         color: control.pressed ? "#f0f0f0" : "#f6f6f6"
-                        border.color: "#bdbebf"
+                        border.color: "#000000"
                         rotation: 180
                     }
                 }

@@ -4,7 +4,8 @@ import "../"
 BarBlock {
     id: text
     content: BarText {
-        //symbolText: ` ${Datetime.time}`
-        symbolText: `${Datetime.time}`
+        symbolText: `${Datetime.date}`
+
+        font.pixelSize: 16
     }
 }

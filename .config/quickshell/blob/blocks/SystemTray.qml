@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.SystemTray
-import "root:/bar"
+import "root:/blob"
 
 RowLayout {
     spacing: 5
@@ -49,7 +49,7 @@ RowLayout {
                 id: icon
                 anchors.centerIn: parent
                 source: item.icon
-                implicitSize: 16
+                implicitSize: 32
             }
 
             QsMenuAnchor {

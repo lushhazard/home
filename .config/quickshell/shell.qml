@@ -1,7 +1,7 @@
 //@ pragma UseQApplication
 import Quickshell
-import "bar"
+import "blob"
 
 ShellRoot {
-    Bar {}
+    Blob {}
 }

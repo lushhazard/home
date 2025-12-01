@@ -163,6 +163,25 @@ Scope {
                     Blocks.Time {}
                 }
             }
+
+            Timer {
+                id: autoHideTimer
+                interval: 10000   // 10s
+                repeat: false
+                running: bar.visible
+
+                onTriggered: {
+                    bar.visible = false;
+                }
+            }
+
+            onVisibleChanged: {
+                if (visible) {
+                    autoHideTimer.restart();
+                } else {
+                    autoHideTimer.stop();
+                }
+            }
         }
     }
 }
