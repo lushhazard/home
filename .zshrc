@@ -21,9 +21,7 @@ alias vim='nvim'
 alias zshalias='v ~/.config/zsh/custom/aliases.zsh'
 alias pmain='poetry run python main.py'
 alias ytdl='yt-dlp -P home:/home/lush/動画/ytdl'
-
 alias wine="LANG=EN wine"
-
 alias h='hyprland'
 alias drag='dragon-drop'
 
@@ -33,6 +31,8 @@ alias eg="eza -l --git --git-repos --time-style '+%Y年%m月%d日 %H:%M'"
 alias ez='eza'
 
 alias n='n -deA'
+
+alias mpv='mpv --target-colorspace-hint-mode=source'
 
 function ytdrag () {
     dlfile=$(ytdl --quiet --print after_move:filepath $1)
