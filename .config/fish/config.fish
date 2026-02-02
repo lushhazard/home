@@ -22,7 +22,7 @@ abbr --add ez eza
 
 abbr --add n n -deA
 
-abbr --add mpv mpv --target-colorspace-hint-mode=source
+#abbr --add mpv mpv --target-colorspace-hint-mode=source
 
 function ytdl
     yt-dlp -P home:/home/lush/動画/ytdl $argv
