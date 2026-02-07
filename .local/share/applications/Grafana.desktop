@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Grafana
+Comment=chromium webapp grafana graphana Graphana
+Exec=chromium --app=https://192.168.1.137:3000/
+Terminal=false
+Type=Application
+Categories=Web;

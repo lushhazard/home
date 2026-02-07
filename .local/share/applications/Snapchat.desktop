@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Snapchat
+Comment=chromium webappthing snapchat
+Exec=chromium --app=https://www.snapchat.com/
+Terminal=false
+Type=Application
+Categories=Web;

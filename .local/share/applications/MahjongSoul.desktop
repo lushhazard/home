@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Mahjong Soul
+Comment=chromium webapp mahjong soul Mahjongsoul mahjongsoul
+Exec=chromium --app=https://game.mahjongsoul.com/
+Terminal=false
+Type=Application
+Categories=Web;
