@@ -7,7 +7,7 @@ set -g fish_greeting
 abbr --add v nvim
 abbr --add vi nvim
 abbr --add vim nvim
-abbr --add zshalias v ~/.config/zsh/custom/aliases.zsh
+abbr --add l ls -lah
 abbr --add pmain poetry run python main.py
 
 abbr --add wine LANG=EN wine
