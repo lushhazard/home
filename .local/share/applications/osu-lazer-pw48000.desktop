@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=osu!lazer (pw latency fixed)
+MimeType=application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap-archive;
+Icon=/usr/share/pixmaps/osu-lazer.png
+Comment=Open source free-to-win rhythm game
+Exec=env PIPEWIRE_RATE=1/48000 PIPEWIRE_LATENCY=64/48000 /usr/bin/osu-lazer
+Categories=Game;
