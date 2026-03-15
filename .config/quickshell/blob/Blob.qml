@@ -1,4 +1,5 @@
 import Quickshell
+import QtQuick.Controls
 import Quickshell.Io
 import Quickshell.Services.Pipewire
 import Quickshell.Hyprland
@@ -34,46 +35,50 @@ Scope {
 
         //this is all sound stuff, for my sound setup
         //
-        property var vcsink
-        property var mediasink
-        property var nullsink
+        // property var vcsink
+        // property var mediasink
+        // property var nullsink
 
+        // PwObjectTracker {
+        //     id: sinkBinder
+        //     objects: [blob.vcsink, blob.mediasink, blob.nullsink]
+        // }
         PwObjectTracker {
-            id: sinkBinder
-            objects: [blob.vcsink, blob.mediasink, blob.nullsink]
+            id: defaultSinkTracker
+            objects: [Pipewire.defaultAudioSink]
         }
 
-        Timer {
-            interval: 1000
-            running: true
-            repeat: true
-            onTriggered: {
-                for (var i = 0; i < Pipewire.nodes.rowCount(); i++) {
-                    try {
-                        var node = Pipewire.nodes.values[i];
-                        var desc = node.description;
-                        console.log(i + " " + desc);
+        // Timer {
+        //     interval: 1000
+        //     running: true
+        //     repeat: true
+        //     onTriggered: {
+        //         for (var i = 0; i < Pipewire.nodes.rowCount(); i++) {
+        //             try {
+        //                 var node = Pipewire.nodes.values[i];
+        //                 var desc = node.description;
+        //                 console.log(i + " " + desc);
 
-                        if (desc.startsWith("vc-sink")) {
-                            blob.vcsink = node;
-                        } else if (desc.startsWith("media-sink")) {
-                            blob.mediasink = node;
-                        } else if (desc.startsWith("nullsink")) {
-                            blob.nullsink = node;
-                        }
-                        if (blob.nullsink && blob.vcsink && blob.mediasink) {
-                            console.log("all sinks ready, stopping sink timer...");
-                            stop();
-                        } else {
-                            console.log("still waiting for sinks.. looping");
-                        }
-                    } catch (e) {
-                        console.log("Error iterating node: " + e);
-                    }
-                    ;
-                }
-            }
-        }
+        //                 if (desc.startsWith("vc-sink")) {
+        //                     blob.vcsink = node;
+        //                 } else if (desc.startsWith("media-sink")) {
+        //                     blob.mediasink = node;
+        //                 } else if (desc.startsWith("nullsink")) {
+        //                     blob.nullsink = node;
+        //                 }
+        //                 if (blob.nullsink && blob.vcsink && blob.mediasink) {
+        //                     console.log("all sinks ready, stopping sink timer...");
+        //                     stop();
+        //                 } else {
+        //                     console.log("still waiting for sinks.. looping");
+        //                 }
+        //             } catch (e) {
+        //                 console.log("Error iterating node: " + e);
+        //             }
+        //             ;
+        //         }
+        //     }
+        // }
 
         ColumnLayout {
             spacing: 50
@@ -89,23 +94,56 @@ Scope {
             }
             RowLayout {}
 
+            // RowLayout {
+            //     spacing: 8
+            //     Layout.alignment: Qt.AlignHCenter
+            //     Blocks.Sound {
+            //         id: vcSound
+            //         sink: blob.vcsink
+            //         name: "vc"
+            //     }
+            //     Blocks.Sound {
+            //         id: mediaSound
+            //         sink: blob.mediasink
+            //         name: "me"
+            //     }
+            //     Blocks.Sound {
+            //         id: nullSound
+            //         sink: blob.nullsink
+            //         name: "nu"
+            //     }
+            // }
             RowLayout {
                 spacing: 8
                 Layout.alignment: Qt.AlignHCenter
-                Blocks.Sound {
-                    id: vcSound
-                    sink: blob.vcsink
-                    name: "vc"
+                Layout.fillWidth: true
+
+                Text {
+                    text: "🔊"
+                    color: "#FF8800"
+                    font.pixelSize: 14
                 }
-                Blocks.Sound {
-                    id: mediaSound
-                    sink: blob.mediasink
-                    name: "me"
+
+                Slider {
+                    id: volumeSlider
+                    Layout.fillWidth: true
+                    from: 0
+                    to: 1
+                    stepSize: 0.01
+                    value: Pipewire.defaultAudioSink ? Pipewire.defaultAudioSink.audio.volume : 0
+
+                    onMoved: {
+                        if (Pipewire.defaultAudioSink) {
+                            Pipewire.defaultAudioSink.audio.volume = value;
+                        }
+                    }
                 }
-                Blocks.Sound {
-                    id: nullSound
-                    sink: blob.nullsink
-                    name: "nu"
+
+                Text {
+                    text: Pipewire.defaultAudioSink ? Math.round(Pipewire.defaultAudioSink.audio.volume * 100) + "%" : "–"
+                    color: "#FF8800"
+                    font.pixelSize: 12
+                    width: 36
                 }
             }
 
