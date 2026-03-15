@@ -8,7 +8,7 @@ import "../utils" as Utils
 import "root:/"
 
 RowLayout {
-    property HyprlandMonitor monitor: Hyprland.monitorFor(screen)
+    //property HyprlandMonitor monitor: Hyprland.monitorFor(screen)
 
     Rectangle {
         id: workspaceBar

@@ -1,4 +1,6 @@
 import Quickshell
+import QtQuick.Effects
+import Quickshell.Services.Mpris
 import QtQuick.Controls
 import Quickshell.Io
 import Quickshell.Services.Pipewire
@@ -28,9 +30,24 @@ Scope {
         Rectangle {
             anchors.fill: parent
             radius: 12
-            color: "#00000022"   // semi-transparent tint
-            border.color: "#FF8800"
-            border.width: 2
+            color: "#66000000" //why does qt use argb instead of rgba
+            //border.color: "#FF8800"
+            //border.width: 2
+            Text {
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.margins: 8
+                text: "✕"
+                color: "#FF8800"
+                font.pixelSize: 20
+                z: 1
+
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: blob.visible = false
+                }
+            }
         }
 
         //this is all sound stuff, for my sound setup
@@ -81,7 +98,7 @@ Scope {
         // }
 
         ColumnLayout {
-            spacing: 50
+            spacing: 60
             anchors.fill: parent
             anchors.margins: 16
 
@@ -92,7 +109,7 @@ Scope {
                 //Blocks.Icon {}
                 Blocks.Workspaces {}
             }
-            RowLayout {}
+            //RowLayout {}
 
             // RowLayout {
             //     spacing: 8
@@ -113,15 +130,94 @@ Scope {
             //         name: "nu"
             //     }
             // }
+
+            ColumnLayout {
+                spacing: 6
+                Layout.alignment: Qt.AlignHCenter
+                Layout.fillWidth: true
+                visible: Mpris.players.rowCount() > 0
+
+                Text {
+                    Layout.fillWidth: true
+                    text: Mpris.players.rowCount() > 0 ? ("♫ : " + Mpris.players.values[0].trackTitle || "♫ : Unknown") : ""
+                    color: "#FFF"
+                    font.pixelSize: 14
+                    horizontalAlignment: Text.AlignHCenter
+                    elide: Text.ElideRight
+                }
+
+                RowLayout {
+                    spacing: 18
+                    Layout.alignment: Qt.AlignHCenter
+                    visible: Mpris.players.rowCount() > 0
+
+                    Repeater {
+                        model: [
+                            {
+                                label: "⏮",
+                                action: "prev"
+                            },
+                            {
+                                label: "⏸",
+                                action: "play"
+                            },
+                            {
+                                label: "⏭",
+                                action: "next"
+                            }
+                        ]
+
+                        Text {
+                            required property var modelData
+                            color: "#FFF"
+                            font.pixelSize: 24
+
+                            // swap play/pause icon dynamically
+                            text: {
+                                if (modelData.action === "play") {
+                                    return Mpris.players.rowCount() > 0 && Mpris.players.values[0].playbackState === MprisPlaybackState.Playing ? "⏸" : "▷";
+                                }
+                                return modelData.label;
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    var player = Mpris.players.values[0];
+                                    if (!player)
+                                        return;
+                                    if (modelData.action === "prev")
+                                        player.previous();
+                                    else if (modelData.action === "play")
+                                        player.togglePlaying();
+                                    else if (modelData.action === "next")
+                                        player.next();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             RowLayout {
                 spacing: 8
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true
 
                 Text {
-                    text: "🔊"
-                    color: "#FF8800"
+                    text: Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio.muted ? "🔇" : "🔊"
+                    color: Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio.muted ? "#888888" : "#FF8800"
                     font.pixelSize: 14
+
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {
+                            if (Pipewire.defaultAudioSink) {
+                                Pipewire.defaultAudioSink.audio.muted = !Pipewire.defaultAudioSink.audio.muted;
+                            }
+                        }
+                    }
                 }
 
                 Slider {
@@ -135,6 +231,18 @@ Scope {
                     onMoved: {
                         if (Pipewire.defaultAudioSink) {
                             Pipewire.defaultAudioSink.audio.volume = value;
+                        }
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        acceptedButtons: Qt.RightButton
+                        propagateComposedEvents: true
+
+                        onClicked: mouse => {
+                            if (mouse.button === Qt.RightButton) {
+                                pavucontrol.startDetached();
+                                blob.visible = false;
+                            }
                         }
                     }
                 }
@@ -152,8 +260,6 @@ Scope {
                 Layout.alignment: Qt.AlignHCenter
                 Blocks.SystemTray {}
             }
-
-            RowLayout {}
 
             RowLayout {
                 spacing: 0
@@ -184,5 +290,9 @@ Scope {
         //        autoHideTimer.stop();
         //    }
         //}
+        Process {
+            id: pavucontrol
+            command: ["pavucontrol"]
+        }
     }
 }
