@@ -8,7 +8,7 @@
             "id": "pipewire-screen-capture-source",
             "versioned_id": "pipewire-screen-capture-source",
             "settings": {
-                "RestoreToken": "56089dfa-a7aa-4c7d-a32c-8d6b61f81112"
+                "RestoreToken": "23abe7de-5bcc-4f43-838b-7a8a9679ca9f"
             },
             "mixers": 0,
             "sync": 0,
@@ -309,7 +309,7 @@
     "saved_projectors": [],
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -32,
+    "scaling_level": -31,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "virtual-camera": {

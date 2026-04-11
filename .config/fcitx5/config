@@ -42,7 +42,7 @@ ModifierOnlyKeyTimeout=250
 0=Tab
 
 [Hotkey/TogglePreedit]
-0=Control+Alt+P
+0=Alt+Super+U
 
 [Behavior]
 # デフォルトで有効にする
