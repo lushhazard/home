@@ -98,7 +98,7 @@ Scope {
         // }
 
         ColumnLayout {
-            spacing: 60
+            spacing: 70
             anchors.fill: parent
             anchors.margins: 16
 
@@ -108,6 +108,54 @@ Scope {
                 Layout.fillWidth: true
                 //Blocks.Icon {}
                 Blocks.Workspaces {}
+            }
+
+            RowLayout {
+                spacing: 8
+                Layout.alignment: Qt.AlignHCenter
+                Repeater {
+                    model: [
+                        {
+                            label: "",
+                            action: "toggle"
+                        },
+                        {
+                            label: "",
+                            action: "bright"
+                        },
+                        {
+                            label: "",
+                            action: "dark"
+                        },
+                        {
+                            label: "",
+                            action: "plug"
+                        }
+                    ]
+
+                    Text {
+                        required property var modelData
+                        color: "#FFF"
+                        font.pixelSize: 24
+
+                        text: modelData.label
+
+                        MouseArea {
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: {
+                                if (modelData.action === "toggle")
+                                    haLights.startDetached();
+                                else if (modelData.action === "bright")
+                                    haBright.startDetached();
+                                else if (modelData.action === "dark")
+                                    haDark.startDetached();
+                                else if (modelData.action === "plug")
+                                    haPlug.startDetached();
+                            }
+                        }
+                    }
+                }
             }
             //RowLayout {}
 
@@ -131,74 +179,74 @@ Scope {
             //     }
             // }
 
-            ColumnLayout {
-                spacing: 6
-                Layout.alignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-                visible: Mpris.players.rowCount() > 0
+            // ColumnLayout {
+            //     spacing: 6
+            //     Layout.alignment: Qt.AlignHCenter
+            //     Layout.fillWidth: true
+            //     //visible: Mpris.players.rowCount() > 0
 
-                Text {
-                    Layout.fillWidth: true
-                    text: Mpris.players.rowCount() > 0 ? ("♫ : " + Mpris.players.values[0].trackTitle || "♫ : Unknown") : ""
-                    color: "#FFF"
-                    font.pixelSize: 14
-                    horizontalAlignment: Text.AlignHCenter
-                    elide: Text.ElideRight
-                }
+            //     Text {
+            //         Layout.fillWidth: true
+            //         text: Mpris.players.rowCount() > 0 ? ("♫ : " + Mpris.players.values[0].trackTitle || "♫ : Unknown") : ""
+            //         color: "#FFF"
+            //         font.pixelSize: 14
+            //         horizontalAlignment: Text.AlignHCenter
+            //         elide: Text.ElideRight
+            //     }
 
-                RowLayout {
-                    spacing: 18
-                    Layout.alignment: Qt.AlignHCenter
-                    visible: Mpris.players.rowCount() > 0
+            //     RowLayout {
+            //         spacing: 18
+            //         Layout.alignment: Qt.AlignHCenter
+            //         visible: Mpris.players.rowCount() > 0
 
-                    Repeater {
-                        model: [
-                            {
-                                label: "⏮",
-                                action: "prev"
-                            },
-                            {
-                                label: "⏸",
-                                action: "play"
-                            },
-                            {
-                                label: "⏭",
-                                action: "next"
-                            }
-                        ]
+            //         Repeater {
+            //             model: [
+            //                 {
+            //                     label: "⏮",
+            //                     action: "prev"
+            //                 },
+            //                 {
+            //                     label: "⏸",
+            //                     action: "play"
+            //                 },
+            //                 {
+            //                     label: "⏭",
+            //                     action: "next"
+            //                 }
+            //             ]
 
-                        Text {
-                            required property var modelData
-                            color: "#FFF"
-                            font.pixelSize: 24
+            //             Text {
+            //                 required property var modelData
+            //                 color: "#FFF"
+            //                 font.pixelSize: 24
 
-                            // swap play/pause icon dynamically
-                            text: {
-                                if (modelData.action === "play") {
-                                    return Mpris.players.rowCount() > 0 && Mpris.players.values[0].playbackState === MprisPlaybackState.Playing ? "⏸" : "▷";
-                                }
-                                return modelData.label;
-                            }
+            //                 // swap play/pause icon dynamically
+            //                 text: {
+            //                     if (modelData.action === "play") {
+            //                         return Mpris.players.rowCount() > 0 && Mpris.players.values[0].playbackState === MprisPlaybackState.Playing ? "⏸" : " > ";
+            //                     }
+            //                     return modelData.label;
+            //                 }
 
-                            MouseArea {
-                                anchors.fill: parent
-                                cursorShape: Qt.PointingHandCursor
-                                onClicked: {
-                                    var player = Mpris.players.values[0];
-                                    if (!player)
-                                        return;
-                                    if (modelData.action === "prev")
-                                        player.previous();
-                                    else if (modelData.action === "play")
-                                        player.togglePlaying();
-                                    else if (modelData.action === "next")
-                                        player.next();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            //                 MouseArea {
+            //                     anchors.fill: parent
+            //                     cursorShape: Qt.PointingHandCursor
+            //                     onClicked: {
+            //                         var player = Mpris.players.values[0];
+            //                         if (!player)
+            //                             return;
+            //                         if (modelData.action === "prev")
+            //                             player.previous();
+            //                         else if (modelData.action === "play")
+            //                             player.togglePlaying();
+            //                         else if (modelData.action === "next")
+            //                             player.next();
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
             RowLayout {
                 spacing: 8
                 Layout.alignment: Qt.AlignHCenter
@@ -293,6 +341,22 @@ Scope {
         Process {
             id: pavucontrol
             command: ["pavucontrol"]
+        }
+        Process {
+            id: haLights
+            command: ["ha.fish", "Toggle_lights"]
+        }
+        Process {
+            id: haBright
+            command: ["ha.fish", "Bright_Lights"]
+        }
+        Process {
+            id: haDark
+            command: ["ha.fish", "Dark_Lights"]
+        }
+        Process {
+            id: haPlug
+            command: ["ha.fish", "Toggle_Plug"]
         }
     }
 }
