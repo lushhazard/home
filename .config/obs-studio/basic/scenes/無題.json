@@ -2,13 +2,13 @@
     "name": "無題",
     "sources": [
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "スクリーンキャプチャ (PipeWire)",
             "uuid": "0f01bf0d-ffa5-4783-9815-60e639361bba",
             "id": "pipewire-screen-capture-source",
             "versioned_id": "pipewire-screen-capture-source",
             "settings": {
-                "RestoreToken": "23abe7de-5bcc-4f43-838b-7a8a9679ca9f"
+                "RestoreToken": "c1ac10a1-c978-4b9a-b349-9a6abd0a686e"
             },
             "mixers": 0,
             "sync": 0,
@@ -28,7 +28,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "null",
             "uuid": "3e2cbaef-8b42-461b-8518-aebea24b2d0d",
             "id": "jack_output_capture",
@@ -59,7 +59,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "mic",
             "uuid": "534e3bf8-6da5-4a28-91dd-fb416bcf861f",
             "id": "jack_output_capture",
@@ -90,7 +90,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 536936450,
             "name": "シーン",
             "uuid": "b7a0376a-50dd-4814-abd7-7b0ad8b693a9",
             "id": "scene",
