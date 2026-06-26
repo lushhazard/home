@@ -291,7 +291,7 @@ hl.device({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + N", hl.dsp.layout("togglesplit")) -- dwindle only
-hl.bind("SUPER + P", hl.dsp.window.pseudo())
+--hl.bind("SUPER + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. "+ SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + F", hl.dsp.window.fullscreen())
 hl.bind("SUPER + F5", hl.dsp.dpms("toggle"))
