@@ -45,7 +45,7 @@ ModifierOnlyKeyTimeout=250
 0=Alt+Super+U
 
 [Behavior]
-# デフォルトで有効にする
+# 入力メソッドをデフォルトで有効にする
 ActiveByDefault=True
 # フォーカス時に状態をリセット
 resetStateWhenFocusIn=No
@@ -61,7 +61,7 @@ showInputMethodInformationWhenFocusIn=False
 CompactInputMethodInformation=True
 # 第1入力メソッドの情報を表示する
 ShowFirstInputMethodInformation=True
-# デフォルトのページサイズ
+# ページあたりのデフォルトの候補数
 DefaultPageSize=5
 # XKB オプションの上書き
 OverrideXkbOption=False

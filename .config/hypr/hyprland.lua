@@ -286,13 +286,14 @@ hl.device({
 })
 
 ---------------------
----- KEYBINDINGS ----
+---- KEYBINDINGS ---- binds keybinds
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + N", hl.dsp.layout("togglesplit")) -- dwindle only
 --hl.bind("SUPER + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. "+ SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. "+ T", hl.dsp.window.pin({ action = "toggle" }))
 hl.bind("SUPER + F", hl.dsp.window.fullscreen())
 hl.bind("SUPER + F5", hl.dsp.dpms("toggle"))
 
@@ -509,6 +510,8 @@ hl.window_rule({
 	pin = true,
 	center = true,
 	size = { 450, 450 },
+	opacity = "1 override 0.5 override",
+	--dim_around = true,
 	match = { title = "quickshell_blob" },
 })
 hl.window_rule({
