@@ -31,7 +31,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal = "foot"
 local fileManager = "thunar"
-local menu = "wofi --show drun"
+local menu = "fuzzel"
 
 -------------------
 ---- AUTOSTART ----
@@ -310,7 +310,10 @@ hl.bind("SUPER + R", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + D", hl.dsp.exec_cmd('hyprctl notify -1 2000 "rgb(ab1eff)" "$(date)"'))
 hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd("discord"))
 hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("steam"))
-hl.bind("SUPER + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
+hl.bind(
+	"SUPER + V",
+	hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu --namespace=clipboard_history -w 128 | cliphist decode | wl-copy")
+)
 hl.bind("SUPER + SHIFT + Z", hl.dsp.exec_cmd("chromium --app=https://game.mahjongsoul.com/"))
 hl.bind("SUPER + SHIFT + G", hl.dsp.exec_cmd("chromium --app=https://192.168.1.137:3000/"))
 hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd("systemctl reboot --boot-loader-entry=auto-windows"))
@@ -519,3 +522,10 @@ hl.window_rule({
 	float = true,
 	match = { initial_class = "org.qbittorrent.qBittorrent" },
 })
+hl.layer_rule({
+	no_screen_share = true,
+	match = { namespace = "clipboard_history" },
+})
+--hl.layer_rule({
+--	match = { namespace = "launcher" },
+--})
