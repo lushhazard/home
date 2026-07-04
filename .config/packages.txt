@@ -44,6 +44,7 @@ firefox-i18n-ja 152.0.4-1
 fish 4.8.0-1
 foot 1.27.0-1
 fortune-mod 3.26.1-1
+fuzzel 1.14.1-1
 fzf 0.73.1-1
 gamescope 3.16.24-1
 gimp 3.2.4-1
