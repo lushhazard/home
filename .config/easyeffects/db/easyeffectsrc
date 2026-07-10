@@ -9,7 +9,6 @@ visiblePage=pluginsPage
 [StreamOutputs]
 outputDevice=alsa_output.usb-HP__Inc_HyperX_QuadCast_S_4103-00.analog-stereo
 plugins=equalizer#0
-visiblePage=pluginsPage
 visiblePlugin=equalizer#0
 
 [Style]
@@ -17,4 +16,4 @@ forceBreezeTheme=false
 
 [Window]
 height=1436
-width=1738
+width=2554
