@@ -46,7 +46,7 @@ ModifierOnlyKeyTimeout=250
 
 [Behavior]
 # 入力メソッドをデフォルトで有効にする
-ActiveByDefault=True
+ActiveByDefault=False
 # フォーカス時に状態をリセット
 resetStateWhenFocusIn=No
 # 入力状態を共有する

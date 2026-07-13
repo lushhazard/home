@@ -33,6 +33,29 @@ local terminal = "foot"
 local fileManager = "thunar"
 local menu = "fuzzel"
 
+-------------------------------
+---- ENVIRONMENT VARIABLES ----
+-------------------------------
+
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
+
+hl.env("XCURSOR_SIZE", "32")
+hl.env("XCURSOR_THEME", "miku-cursor")
+hl.env("HYPRCURSOR_SIZE", "32")
+hl.env("HYPRCURSOR_THEME", "miku-cursor")
+hl.env("GTK_THEME", "Adwaita:dark")
+hl.env("GTK_IM_MODULE", "fcitx")
+hl.env("QT_IM_MODULE", "fcitx")
+hl.env("XMODIFIERS", "@im=fcitx")
+hl.env("XDG_MENU_PREFIX", "arch-")
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+hl.env("GOPATH", "/var/go")
+--hl.env("MOZC_IBUS_CANDIDATE_WINDOW", "ibus")
+
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -59,31 +82,10 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("sudo quadcastrgb solid 110000")
 	hl.exec_cmd("hyprctl setcursor miku-cursor 32")
 	hl.exec_cmd("hyprpm reload")
+	hl.exec_cmd("easyeffects --gapplication-service")
 	hl.exec_cmd("obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check")
 	hl.exec_cmd("firefox")
 end)
-
--------------------------------
----- ENVIRONMENT VARIABLES ----
--------------------------------
-
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
-
-hl.env("XCURSOR_SIZE", "32")
-hl.env("XCURSOR_THEME", "miku-cursor")
-hl.env("HYPRCURSOR_SIZE", "32")
-hl.env("HYPRCURSOR_THEME", "miku-cursor")
-hl.env("GTK_THEME", "Adwaita:dark")
-hl.env("GTK_IM_MODULE", "fcitx")
-hl.env("QT_IM_MODULE", "fcitx")
-hl.env("XMODIFIERS", "@im=fcitx")
-hl.env("XDG_MENU_PREFIX", "arch-")
-hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
-hl.env("XDG_SESSION_TYPE", "wayland")
-hl.env("XDG_SESSION_DESKTOP", "Hyprland")
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
-hl.env("QT_QPA_PLATFORM", "wayland;xcb")
-hl.env("GOPATH", "/var/go")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -524,10 +526,15 @@ hl.window_rule({
 	float = true,
 	match = { initial_class = "org.qbittorrent.qBittorrent" },
 })
+-- hl.window_rule({
+-- 	match = { class = "gamescope" },
+-- 	immediate = true,
+-- })
 hl.layer_rule({
 	no_screen_share = true,
 	match = { namespace = "clipboard_history" },
 })
+
 --hl.layer_rule({
 --	match = { namespace = "launcher" },
 --})
