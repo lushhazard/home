@@ -1,5 +1,7 @@
 [Spectrum]
-spectrumFpsCap=120
+dynamicYScale=false
+nPoints=128
+spectrumFpsCap=240
 spectrumShape=lines
 
 [StreamInputs]
@@ -8,14 +10,14 @@ visiblePage=pluginsPage
 
 [StreamOutputs]
 outputDevice=alsa_output.usb-HP__Inc_HyperX_QuadCast_S_4103-00.analog-stereo
-plugins=equalizer#0
+plugins=equalizer#0,bass_enhancer#0
 visiblePage=pluginsPage
-visiblePlugin=equalizer#0
+visiblePlugin=bass_enhancer#0
 
 [Style]
 forceBreezeTheme=false
 
 [Window]
+englishLanguage=true
 height=1436
-visiblePage=inputPage
-width=2554
+width=924

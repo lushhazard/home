@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=qBitTorrent w/Vopono
+Comment=qbittorrent vopono torrent
+Exec=$HOME/scripts/qbit_launch.fish /etc/wireguard/inazuma-NO-42.conf
+Terminal=true
+Type=Application
+Categories=Torrent;
