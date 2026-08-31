@@ -76,7 +76,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("fcitx5")
 	hl.exec_cmd("XDG_MENU_PREFIX=arch- kbuildsycoca6")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-	hl.exec_cmd("$HOME/scripts/qbit_launch.fish /etc/wireguard/inazuma-NO-42.conf")
+	hl.exec_cmd("~/scripts/qbit_launch.fish /etc/wireguard/inazuma-NO-42.conf")
 	hl.exec_cmd("sudo quadcastrgb solid 110000")
 	hl.exec_cmd("hyprctl setcursor miku-cursor 32")
 	hl.exec_cmd("hyprpm reload")
@@ -168,7 +168,7 @@ hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 }
 hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
 
 -- Default springs
-hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+hl.curve("easy", { type = "spring", mass = 1, stiffness = 878.5, dampening = 59.29 })
 
 -- do math on the speed value:
 -- :'<,'>s:speed = \zs[0-9.]\+:\=str2float(submatch(0))/2.0:
