@@ -90,6 +90,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("sudo quadcastrgb solid 110000")
 	hl.exec_cmd("hyprctl setcursor miku-cursor 32")
 	hl.exec_cmd("hyprpm reload")
+	hl.exec_cmd("xwayland-satellite")
+
 	hl.exec_cmd("easyeffects")
 	hl.exec_cmd("obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check")
 	hl.exec_cmd("firefox")
