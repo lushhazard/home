@@ -34,6 +34,10 @@ function ytdrag
     echo $dlfile
 end
 
+function ytmp3
+    ytdl -t mp3 $argv
+end
+
 function blackout
     tput civis
     printf "\033[2J\033[H"

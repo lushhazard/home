@@ -21,7 +21,17 @@ hl.monitor({
 	scale = "1",
 	bitdepth = 10,
 	vrr = 0,
-	--cm = "wide",
+	--cm = "hdr",
+	--sdr_min_luminance = 0.0002,
+	--sdr_max_luminance = 203,
+	--sdrbrightness = 1.45,
+	--sdrsaturation = 1.27,
+})
+
+hl.config({
+	render = {
+		direct_scanout = 2,
+	},
 })
 
 ---------------------
@@ -149,6 +159,7 @@ hl.config({
 			size = 10,
 			passes = 3,
 			vibrancy = 0.1696,
+			--variant = "aurora",
 		},
 		--motion_blur = {
 		--	enabled = true,
@@ -396,10 +407,10 @@ local function zoom(offset)
 	hl.config({ cursor = { zoom_factor = current } })
 end
 hl.bind("SUPER + mouse_down", function()
-	zoom(1.3)
+	zoom(0.75)
 end)
 hl.bind("SUPER + mouse_up", function()
-	zoom(0.75)
+	zoom(1.3)
 end)
 
 -- Laptop multimedia keys for volume and LCD brightness
