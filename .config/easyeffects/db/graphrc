@@ -1,2 +1,7 @@
 [Graph]
-colorTheme=mixSeries
+backgroundColor=0,0,0
+borderColors=255,67,70
+colorTheme=userDefined
+labelBackgroundColor=34,34,34
+plotAreaBackgroundColor=20,20,20
+seriesColors=255,0,68

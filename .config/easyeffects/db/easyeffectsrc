@@ -1,5 +1,6 @@
 [Spectrum]
 dynamicYScale=false
+height=177
 minimumFrequency=15
 nPoints=128
 spectrumFpsCap=240
