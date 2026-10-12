@@ -24,7 +24,7 @@ abbr --add n n -deA
 
 #abbr --add mpv mpv --target-colorspace-hint-mode=source
 
-function ytdl
+function ytdl --wraps yt-dlp
     yt-dlp -P home:/home/lush/動画/ytdl $argv
 end
 
@@ -34,7 +34,7 @@ function ytdrag
     echo $dlfile
 end
 
-function ytmp3
+function ytmp3 --wraps ytdl
     ytdl -t mp3 $argv
 end
 

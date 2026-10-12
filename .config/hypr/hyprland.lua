@@ -323,6 +323,31 @@ hl.bind("SUPER + M", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("SUPER + R", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + D", hl.dsp.exec_cmd('hyprctl notify -1 2000 "rgb(ab1eff)" "$(date)"'))
+
+local opacity_levels = { "0.7", "0.5", "0.4", "0.2", "1.0" }
+
+local window_opacity_indices = {}
+
+hl.bind("SUPER + SHIFT + D", function()
+	local win = hl.get_active_window()
+	if not win or not win.address then
+		return
+	end
+
+	local win_address = "address:" .. win.address
+
+	local current_idx = window_opacity_indices[win_address] or 0
+	local next_idx = current_idx + 1
+	if next_idx > #opacity_levels then
+		next_idx = 1
+	end
+
+	local next_opacity = opacity_levels[next_idx]
+	hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity", value = next_opacity .. " override", window = win_address }))
+
+	window_opacity_indices[win_address] = next_idx
+end)
+
 hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd("discord"))
 hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("steam"))
 hl.bind(
@@ -549,3 +574,27 @@ hl.layer_rule({
 --hl.layer_rule({
 --	match = { namespace = "launcher" },
 --})
+--
+--
+
+-- reaper
+--hl.window_rule({
+--	name = "reaper piano roll size",
+--	match = { initial_title = "Edit MIDI" },
+--	center = true,
+--	size = { 1300, 1000 },
+--})
+
+hl.window_rule({
+	match = { initial_class = "REAPER" },
+	center = true,
+	size = { 1600, 900 },
+	persistent_size = true,
+})
+
+hl.window_rule({
+	match = { initial_title = ".*Plug-in pin connector.*" },
+	--center = true,
+	size = { 400, 200 },
+	move = { "(cursor_x-(window_w*0.5))", "(cursor_y-(window_h*0.5))" },
+})
