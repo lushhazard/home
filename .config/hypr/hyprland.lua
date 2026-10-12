@@ -325,7 +325,6 @@ hl.bind("SUPER + R", hl.dsp.exec_cmd(menu))
 hl.bind("SUPER + D", hl.dsp.exec_cmd('hyprctl notify -1 2000 "rgb(ab1eff)" "$(date)"'))
 
 local opacity_levels = { "0.7", "0.5", "0.4", "0.2", "1.0" }
-
 local window_opacity_indices = {}
 
 hl.bind("SUPER + SHIFT + D", function()
@@ -342,8 +341,11 @@ hl.bind("SUPER + SHIFT + D", function()
 		next_idx = 1
 	end
 
-	local next_opacity = opacity_levels[next_idx]
-	hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity", value = next_opacity .. " override", window = win_address }))
+	local val = opacity_levels[next_idx]
+
+	hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity", value = val, window = win_address }))
+	hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity_inactive", value = val, window = win_address }))
+	hl.dispatch(hl.dsp.window.set_prop({ prop = "opacity_fullscreen", value = val, window = win_address }))
 
 	window_opacity_indices[win_address] = next_idx
 end)
