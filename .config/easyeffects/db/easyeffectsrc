@@ -12,14 +12,12 @@ visiblePage=pluginsPage
 
 [StreamOutputs]
 outputDevice=alsa_output.usb-Grace_Design_SDAC-00.analog-stereo
-plugins=equalizer#3,equalizer#4
 visiblePage=pluginsPage
-visiblePlugin=equalizer#3
 
 [Style]
 forceBreezeTheme=false
 
 [Window]
 englishLanguage=true
-height=714
-width=1247
+height=1436
+width=2554

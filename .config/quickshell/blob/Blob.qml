@@ -30,7 +30,7 @@ Scope {
         Rectangle {
             anchors.fill: parent
             radius: 12
-            color: "#66000000" //why does qt use argb instead of rgba
+            color: "#00000000" //why does qt use argb instead of rgba
             //border.color: "#FF8800"
             //border.width: 2
             Text {

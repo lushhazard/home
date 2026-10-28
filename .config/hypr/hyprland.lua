@@ -92,7 +92,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpm reload")
 	hl.exec_cmd("xwayland-satellite")
 
-	hl.exec_cmd("easyeffects")
+	--hl.exec_cmd("easyeffects")
 	hl.exec_cmd("obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check")
 	hl.exec_cmd("firefox")
 end)
@@ -161,11 +161,42 @@ hl.config({
 			size = 10,
 			passes = 3,
 			vibrancy = 0.1696,
-			--variant = "aurora",
+
+			-- kawase - default
+			-- acrylic - similar to liquid glass
+			-- aurora - aurora-like light streaks
+			-- drops - rain on a window pane
+			-- fluid_jar - 2D fluid simulation
+			-- frost - cracked ice
+			-- haze - a different diffused effect
+			-- heat_shimmer - a small shimmer with aberration
+			-- prism - triangular refraction mask
+			-- ripple - ripple on click
+			-- water - ripple done with a heightmap
+			variant = "drops",
+			fluid_jar = {
+				precision = 4,
+				color = 0x50000000,
+				fill_amount = 1.0,
+				distortion = 10.0,
+				mass = 1,
+				--turbulence = 5,
+			},
+			glass = {
+				--roughness = 1.0,
+
+				size = 27,
+			},
 		},
 		--motion_blur = {
 		--	enabled = true,
 		--},
+		wobble = {
+			enabled = false,
+			--intensity = 2,
+			stiffness = 100,
+			mesh = 32,
+		},
 	},
 
 	animations = {
@@ -314,10 +345,10 @@ hl.bind("SUPER + F5", hl.dsp.dpms("toggle"))
 
 --hl.bind("SUPER + S", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
 hl.bind("SUPER + S", hl.dsp.exec_cmd("obs-cmd replay save"))
-hl.bind(
-	"SUPER + B",
-	hl.dsp.exec_cmd('quickshell ipc call blob toggleVis; hyprctl dispatch focuswindow "title:quickshell_blob"')
-)
+hl.bind("SUPER + B", function()
+	hl.dispatch(hl.dsp.exec_cmd("quickshell ipc call blob toggleVis"))
+	hl.dispatch(hl.dsp.focus({ window = "title:quickshell_blob" }))
+end)
 hl.bind("SUPER + Q", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + M", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
