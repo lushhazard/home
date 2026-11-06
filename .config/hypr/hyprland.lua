@@ -158,7 +158,7 @@ hl.config({
 
 		blur = {
 			enabled = true,
-			size = 10,
+			size = 5,
 			passes = 3,
 			vibrancy = 0.1696,
 
@@ -173,29 +173,40 @@ hl.config({
 			-- prism - triangular refraction mask
 			-- ripple - ripple on click
 			-- water - ripple done with a heightmap
-			variant = "drops",
+			variant = "haze",
 			fluid_jar = {
-				precision = 4,
-				color = 0x50000000,
+				precision = 2,
+				--color = 0x50000000,
+				color = 0x80000000,
 				fill_amount = 1.0,
 				distortion = 10.0,
-				mass = 1,
-				--turbulence = 5,
+				--mass = 1,
+				turbulence = 1,
 			},
 			glass = {
 				--roughness = 1.0,
 
 				size = 27,
 			},
+			water = {
+				--strength = 32.0,
+			},
+			haze = {
+				iridescence = 1.0,
+			},
 		},
 		--motion_blur = {
 		--	enabled = true,
 		--},
 		wobble = {
-			enabled = false,
-			--intensity = 2,
-			stiffness = 100,
+			enabled = true,
 			mesh = 32,
+			mass = 0.04,
+			damping = 0.666,
+			stiffness = 33,
+			intensity = 0.666,
+			value_epsilon = 0.25,
+			velocity_epsilon = 3,
 		},
 	},
 
@@ -214,13 +225,26 @@ hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
 -- Default springs
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 878.5, dampening = 59.29 })
 
--- do math on the speed value:
--- :'<,'>s:speed = \zs[0-9.]\+:\=str2float(submatch(0))/2.0:
+local windowSpeed = 1
+
+-- '<,'>s:speed = \zs.\{-}\ze,:\=str2float(submatch(0))/2.0:
 hl.animation({ leaf = "global", enabled = true, speed = 5.0, bezier = "default" })
 hl.animation({ leaf = "border", enabled = true, speed = 2.695, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windows", enabled = true, speed = 2.395, spring = "easy" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 2.05, spring = "easy", style = "popin 87%" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 0.745, bezier = "linear", style = "popin 87%" })
+hl.animation({ leaf = "windows", enabled = true, speed = 2.395 * windowSpeed, spring = "easy" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 2.05 * windowSpeed, spring = "easy", style = "popin 87%" })
+hl.animation({
+	leaf = "windowsOut",
+	enabled = true,
+	speed = 0.745 * windowSpeed,
+	bezier = "linear",
+	style = "popin 87%",
+})
+hl.animation({
+	leaf = "windowsMove",
+	enabled = true,
+	speed = 1.2 * windowSpeed,
+	bezier = "linear",
+})
 hl.animation({ leaf = "fadeIn", enabled = true, speed = 0.865, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeOut", enabled = true, speed = 0.73, bezier = "almostLinear" })
 hl.animation({ leaf = "fade", enabled = true, speed = 1.515, bezier = "quick" })
@@ -347,7 +371,7 @@ hl.bind("SUPER + F5", hl.dsp.dpms("toggle"))
 hl.bind("SUPER + S", hl.dsp.exec_cmd("obs-cmd replay save"))
 hl.bind("SUPER + B", function()
 	hl.dispatch(hl.dsp.exec_cmd("quickshell ipc call blob toggleVis"))
-	hl.dispatch(hl.dsp.focus({ window = "title:quickshell_blob" }))
+	--hl.dispatch(hl.dsp.focus({ window = "title:quickshell_blob" }))
 end)
 hl.bind("SUPER + Q", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + M", hl.dsp.exec_cmd("hyprlock"))
